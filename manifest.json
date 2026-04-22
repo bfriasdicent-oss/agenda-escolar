@@ -1,11 +1,11 @@
 {
-  "name": "AgendaEscolar",
-  "short_name": "Agenda",
-  "description": "Organiza tus tareas escolares",
-  "start_url": "/agenda-escolar/",
+  "name": "Planify",
+  "short_name": "Planify",
+  "description": "Organiza tu vida escolar",
+  "start_url": "/planify/",
   "display": "standalone",
-  "background_color": "#0b0f1a",
-  "theme_color": "#4f8ef7",
+  "background_color": "#07080f",
+  "theme_color": "#6c63ff",
   "orientation": "portrait",
   "icons": [
     {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
