@@ -7,6 +7,8 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236c63ff'/><rect x='20' y='28' width='60' height='52' rx='8' fill='white'/><rect x='20' y='28' width='60' height='20' rx='8' fill='%23312e81'/><rect x='33' y='18' width='8' height='18' rx='4' fill='white'/><rect x='59' y='18' width='8' height='18' rx='4' fill='white'/><rect x='29' y='57' width='12' height='12' rx='3' fill='%236c63ff'/><rect x='45' y='57' width='12' height='12' rx='3' fill='%236c63ff'/><rect x='61' y='57' width='12' height='12' rx='3' fill='%236c63ff'/></svg>">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#6c63ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Planify">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#07080f;--s1:#0d0f1e;--s2:#12152a;--accent:#6c63ff;--accent2:#ff6584;--accent3:#43e97b;--accent4:#f7971e;--text:#f0f0ff;--muted:#7b7fa8;--border:rgba(108,99,255,.15);--r:14px;--font:system-ui,-apple-system,'Segoe UI',sans-serif}
@@ -47,23 +49,17 @@ main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:3rem 1.5
 .stat-card.c-green .stat-num{color:var(--accent3)}
 .stat-card.c-orange .stat-num{color:var(--accent4)}
 .stat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:.35rem;display:block}
-
-/* ACHIEVEMENTS */
 .achievements-section{margin:2rem 0;animation:fadeUp .7s .1s ease both}
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
 .section-title{font-size:.95rem;font-weight:700}
 .section-sub{font-size:.75rem;color:var(--muted)}
-
-/* ACHIEVEMENT TABS */
 .ach-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
 .ach-tab{background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:.3rem .8rem;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:var(--font)}
 .ach-tab:hover{border-color:var(--accent);color:var(--text)}
 .ach-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
-
 .achievements-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.6rem}
 .achievement{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:.9rem;text-align:center;transition:all .25s;position:relative;overflow:hidden}
 .achievement.unlocked{border-color:rgba(108,99,255,.4);background:rgba(108,99,255,.08)}
-.achievement.unlocked::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(108,99,255,.06),transparent);pointer-events:none}
 .achievement-icon{font-size:1.5rem;margin-bottom:.4rem;display:block;filter:grayscale(1);opacity:.3;transition:all .3s}
 .achievement.unlocked .achievement-icon{filter:none;opacity:1;animation:iconPop .4s cubic-bezier(.34,1.56,.64,1)}
 @keyframes iconPop{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(0)}}
@@ -71,8 +67,6 @@ main{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:3rem 1.5
 .achievement.unlocked .achievement-name{color:var(--text)}
 .achievement-desc{font-size:.62rem;color:var(--muted);margin-top:.15rem;line-height:1.3;opacity:.7}
 .achievement-locked-icon{position:absolute;top:.35rem;right:.35rem;font-size:.55rem;opacity:.4}
-
-/* FORM */
 .form-card{background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:2rem;animation:fadeUp .7s .2s ease both}
 .form-title{font-size:1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
 .form-title-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
@@ -85,8 +79,6 @@ input::placeholder{color:var(--muted)}
 select option{background:var(--s2)}
 .btn-primary{width:100%;background:linear-gradient(135deg,var(--accent),#8b5cf6);border:none;border-radius:12px;padding:.85rem;color:#fff;font-family:var(--font);font-size:.95rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s;margin-top:.75rem}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,99,255,.4)}
-
-/* FILTERS */
 .filter-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem;animation:fadeUp .7s .3s ease both}
 .filter-btn{background:var(--s1);border:1px solid var(--border);border-radius:20px;padding:.4rem 1rem;font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:var(--font)}
 .filter-btn:hover{border-color:var(--accent);color:var(--text)}
@@ -154,6 +146,8 @@ select option{background:var(--s2)}
 .ach-pop-text span{font-size:.78rem;color:var(--muted)}
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:.75rem 1.1rem;font-size:.85rem;font-weight:600;z-index:998;transform:translateY(80px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .toast.show{transform:translateY(0);opacity:1}
+.install-btn{display:none;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:10px;padding:.5rem 1rem;color:#fff;font-family:var(--font);font-weight:700;font-size:.8rem;cursor:pointer;transition:transform .15s}
+.install-btn:hover{transform:translateY(-2px)}
 @media(max-width:640px){.top-row{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}header{padding:0 1rem}main{padding:2rem 1rem 4rem}.nexus-banner{flex-direction:column;text-align:center}.achievements-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
@@ -166,7 +160,10 @@ select option{background:var(--s2)}
 </div>
 <header>
   <div class="logo"><div class="logo-mark">📅</div><span class="logo-text">Planify</span></div>
-  <div class="date-pill" id="date-pill"></div>
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <button class="install-btn" id="install-btn">⬇️ Instalar app</button>
+    <div class="date-pill" id="date-pill"></div>
+  </div>
 </header>
 <main>
   <div class="hero">
@@ -186,7 +183,6 @@ select option{background:var(--s2)}
       <div class="stat-card c-orange"><span class="stat-num" id="n-done">0</span><span class="stat-label">Completadas</span></div>
     </div>
   </div>
-
   <div class="achievements-section">
     <div class="section-header">
       <span class="section-title">🏆 Logros</span>
@@ -204,7 +200,6 @@ select option{background:var(--s2)}
     </div>
     <div class="achievements-grid" id="achievements-grid"></div>
   </div>
-
   <div class="form-card">
     <div class="form-title"><div class="form-title-dot"></div>Nueva tarea</div>
     <div class="form-grid">
@@ -218,7 +213,6 @@ select option{background:var(--s2)}
     </div>
     <button class="btn-primary" onclick="addTask()">+ Agregar tarea</button>
   </div>
-
   <div class="filter-row">
     <button class="filter-btn active" onclick="setFilter('all',this)">Todas</button>
     <button class="filter-btn" onclick="setFilter('pending',this)">Pendientes</button>
@@ -228,18 +222,15 @@ select option{background:var(--s2)}
   </div>
   <div class="list-header"><span class="list-title">Mis tareas</span><span class="list-count" id="list-count">0 tareas</span></div>
   <div id="tasks-list"></div>
-
   <div class="nexus-banner">
     <div class="banner-text"><h3>🧮 Calcula tu promedio escolar</h3><p>Nexus — gratis, sin registro, al instante.</p></div>
     <a href="https://bfriasdicent-oss.github.io/nexus/" target="_blank" class="banner-btn">Ir a Nexus →</a>
   </div>
 </main>
-
 <script>
 const sNames={mat:'Matemáticas',esp:'Español',cien:'Ciencias',hist:'Historia',ing:'Inglés',arte:'Arte',edu:'Ed. Física',otro:'Otra'};
 
 const ACHIEVEMENTS=[
-  // GENERAL
   {id:'first',cat:'general',icon:'🌱',name:'Primer paso',desc:'Agrega tu primera tarea',check:s=>s.total>=1},
   {id:'five',cat:'general',icon:'✋',name:'En marcha',desc:'Agrega 5 tareas',check:s=>s.total>=5},
   {id:'twenty',cat:'general',icon:'📚',name:'Studioso',desc:'Agrega 20 tareas',check:s=>s.total>=20},
@@ -250,50 +241,65 @@ const ACHIEVEMENTS=[
   {id:'done25',cat:'general',icon:'👑',name:'Leyenda',desc:'Completa 25 tareas',check:s=>s.done>=25},
   {id:'urgent1',cat:'general',icon:'⚡',name:'Sin excusas',desc:'Completa 1 urgente',check:s=>s.doneUrgent>=1},
   {id:'urgent5',cat:'general',icon:'🚨',name:'Bajo presión',desc:'Completa 5 urgentes',check:s=>s.doneUrgent>=5},
-  // RACHA
   {id:'streak3',cat:'streak',icon:'🔥',name:'3 días',desc:'Usa Planify 3 días',check:s=>s.streak>=3},
   {id:'streak7',cat:'streak',icon:'⚡',name:'Una semana',desc:'7 días seguidos',check:s=>s.streak>=7},
   {id:'streak14',cat:'streak',icon:'💥',name:'Dos semanas',desc:'14 días seguidos',check:s=>s.streak>=14},
   {id:'streak30',cat:'streak',icon:'🌟',name:'Un mes',desc:'30 días seguidos',check:s=>s.streak>=30},
-  // MATEMÁTICAS
-  {id:'mat1',cat:'mat',icon:'➕',name:'Suma y sigue',desc:'Completa 1 tarea de Mate',check:s=>s.bySubj.mat>=1},
+  {id:'mat1',cat:'mat',icon:'➕',name:'Suma y sigue',desc:'Completa 1 de Mate',check:s=>s.bySubj.mat>=1},
   {id:'mat3',cat:'mat',icon:'📐',name:'Geómetra',desc:'Completa 3 de Mate',check:s=>s.bySubj.mat>=3},
   {id:'mat5',cat:'mat',icon:'🔢',name:'Calculador',desc:'Completa 5 de Mate',check:s=>s.bySubj.mat>=5},
   {id:'mat10',cat:'mat',icon:'∞',name:'Matemático',desc:'Completa 10 de Mate',check:s=>s.bySubj.mat>=10},
-  // ESPAÑOL
-  {id:'esp1',cat:'esp',icon:'✏️',name:'Primera plana',desc:'Completa 1 tarea de Español',check:s=>s.bySubj.esp>=1},
+  {id:'esp1',cat:'esp',icon:'✏️',name:'Primera plana',desc:'Completa 1 de Español',check:s=>s.bySubj.esp>=1},
   {id:'esp3',cat:'esp',icon:'📝',name:'Redactor',desc:'Completa 3 de Español',check:s=>s.bySubj.esp>=3},
   {id:'esp5',cat:'esp',icon:'📖',name:'Lector ávido',desc:'Completa 5 de Español',check:s=>s.bySubj.esp>=5},
   {id:'esp10',cat:'esp',icon:'🖊️',name:'Escritor',desc:'Completa 10 de Español',check:s=>s.bySubj.esp>=10},
-  // CIENCIAS
-  {id:'cien1',cat:'cien',icon:'🔬',name:'En el laboratorio',desc:'Completa 1 de Ciencias',check:s=>s.bySubj.cien>=1},
+  {id:'cien1',cat:'cien',icon:'🔬',name:'En el lab',desc:'Completa 1 de Ciencias',check:s=>s.bySubj.cien>=1},
   {id:'cien3',cat:'cien',icon:'🧪',name:'Científico',desc:'Completa 3 de Ciencias',check:s=>s.bySubj.cien>=3},
   {id:'cien5',cat:'cien',icon:'🧬',name:'Biólogo',desc:'Completa 5 de Ciencias',check:s=>s.bySubj.cien>=5},
   {id:'cien10',cat:'cien',icon:'⚗️',name:'Premio Nobel',desc:'Completa 10 de Ciencias',check:s=>s.bySubj.cien>=10},
-  // HISTORIA
   {id:'hist1',cat:'hist',icon:'🗺️',name:'Explorador',desc:'Completa 1 de Historia',check:s=>s.bySubj.hist>=1},
   {id:'hist3',cat:'hist',icon:'🏛️',name:'Historiador',desc:'Completa 3 de Historia',check:s=>s.bySubj.hist>=3},
   {id:'hist5',cat:'hist',icon:'📜',name:'Cronista',desc:'Completa 5 de Historia',check:s=>s.bySubj.hist>=5},
   {id:'hist10',cat:'hist',icon:'🌍',name:'Arqueólogo',desc:'Completa 10 de Historia',check:s=>s.bySubj.hist>=10},
-  // INGLÉS
   {id:'ing1',cat:'ing',icon:'🇺🇸',name:'Hello World',desc:'Completa 1 de Inglés',check:s=>s.bySubj.ing>=1},
   {id:'ing3',cat:'ing',icon:'💬',name:'Speaker',desc:'Completa 3 de Inglés',check:s=>s.bySubj.ing>=3},
   {id:'ing5',cat:'ing',icon:'📡',name:'Bilingüe',desc:'Completa 5 de Inglés',check:s=>s.bySubj.ing>=5},
   {id:'ing10',cat:'ing',icon:'🌐',name:'Fluent',desc:'Completa 10 de Inglés',check:s=>s.bySubj.ing>=10},
 ];
 
+// Migrar datos viejos si existen
+const oldTasks=localStorage.getItem('agenda_tasks');
+if(oldTasks&&!localStorage.getItem('planify_tasks')){
+  localStorage.setItem('planify_tasks',oldTasks);
+}
+
 let tasks=JSON.parse(localStorage.getItem('planify_tasks')||'[]');
 let unlocked=JSON.parse(localStorage.getItem('planify_unlocked')||'[]');
 let cf='all';
 let achTab='all';
+let deferredPrompt=null;
+
+// PWA install
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  document.getElementById('install-btn').style.display='block';
+});
+document.getElementById('install-btn').addEventListener('click',async()=>{
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt=null;
+  document.getElementById('install-btn').style.display='none';
+});
 
 function getStreak(){
   const today=new Date().toDateString();
   const data=JSON.parse(localStorage.getItem('planify_streak')||'{"days":0,"last":""}');
   const yesterday=new Date(Date.now()-864e5).toDateString();
   if(data.last===today)return data.days;
-  if(data.last===yesterday){data.days++;data.last=today}
-  else{data.days=1;data.last=today}
+  if(data.last===yesterday){data.days++;data.last=today;}
+  else{data.days=1;data.last=today;}
   localStorage.setItem('planify_streak',JSON.stringify(data));
   return data.days;
 }
@@ -336,13 +342,15 @@ function setAchTab(tab,btn){
 
 function checkAchievements(){
   const stats=getStats();
+  let newUnlock=false;
   ACHIEVEMENTS.forEach(a=>{
     if(!unlocked.includes(a.id)&&a.check(stats)){
       unlocked.push(a.id);
-      localStorage.setItem('planify_unlocked',JSON.stringify(unlocked));
+      newUnlock=true;
       showAchievementPopup(a);
     }
   });
+  if(newUnlock)localStorage.setItem('planify_unlocked',JSON.stringify(unlocked));
   renderAchievements();
 }
 
@@ -374,8 +382,13 @@ function addTask(){
   const title=document.getElementById('f-title').value.trim();
   if(!title){toast('Escribe la descripción primero ❗');return}
   tasks.unshift({id:Date.now(),title,subj:document.getElementById('f-subj').value,teacher:document.getElementById('f-teacher').value.trim(),type:document.getElementById('f-type').value,pri:document.getElementById('f-pri').value,date:document.getElementById('f-date').value,notes:document.getElementById('f-notes').value.trim(),done:false});
-  save();document.getElementById('f-title').value='';document.getElementById('f-teacher').value='';document.getElementById('f-notes').value='';
-  render();checkAchievements();toast('✅ Tarea agregada');
+  save();
+  document.getElementById('f-title').value='';
+  document.getElementById('f-teacher').value='';
+  document.getElementById('f-notes').value='';
+  render();
+  checkAchievements();
+  toast('✅ Tarea agregada');
 }
 
 function toggle(id){
@@ -390,7 +403,8 @@ function setFilter(f,btn){cf=f;document.querySelectorAll('.filter-btn').forEach(
 function getFiltered(){
   const now=new Date();now.setHours(0,0,0,0);
   return tasks.filter(t=>{
-    if(cf==='pending')return!t.done;if(cf==='done')return t.done;
+    if(cf==='pending')return!t.done;
+    if(cf==='done')return t.done;
     if(cf==='urgent')return!t.done&&t.pri==='urgent';
     if(cf==='today'){if(!t.date)return false;return new Date(t.date+'T00:00:00').getTime()===now.getTime()}
     return true;
@@ -425,21 +439,40 @@ function render(){
   }).join('');
 }
 
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('./sw.js').then(reg=>{
-    if('Notification' in window){
-      Notification.requestPermission().then(perm=>{
-        if(perm==='granted'){
-          setTimeout(()=>{
-            navigator.serviceWorker.ready.then(sw=>{
-              sw.active.postMessage({
-                type:'CHECK_TASKS',
-                tasks:JSON.parse(localStorage.getItem('planify_tasks')||'[]')
-              });
-            });
-          },2000);
-        }
+function save(){localStorage.setItem('planify_tasks',JSON.stringify(tasks))}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function checkNotifications(){
+  if(!('Notification' in window))return;
+  Notification.requestPermission().then(perm=>{
+    if(perm!=='granted')return;
+    navigator.serviceWorker.ready.then(sw=>{
+      sw.active&&sw.active.postMessage({
+        type:'CHECK_TASKS',
+        tasks:tasks
       });
-    }
+    });
+  });
+}
+
+document.getElementById('f-title').addEventListener('keydown',e=>{if(e.key==='Enter')addTask()});
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').then(()=>{
+    setTimeout(checkNotifications,2000);
   }).catch(()=>{});
 }
+
+initDate();
+renderAchievements();
+checkAchievements();
+render();
+</script>
+</body>
+</html>
