@@ -432,6 +432,70 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem 1.5rem 2.5rem;
   </div>
 </footer>
 
+<!-- ===== MODAL DE CONSENTIMIENTO DE PRIVACIDAD — PLANIFY ===== -->
+<div id="cl-privacy-overlay" style="
+  position:fixed; inset:0; background:rgba(0,0,0,0.75);
+  display:flex; align-items:center; justify-content:center;
+  z-index:99999; padding:16px; backdrop-filter:blur(3px);
+">
+  <div style="
+    max-width:440px; width:100%;
+    background:#14141f; border:1px solid #232336; border-radius:16px;
+    padding:24px; color:#e5e5ec; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  ">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+      <span style="width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;font-size:18px;">🕐</span>
+      <strong style="font-size:18px;">Planify</strong>
+    </div>
+    <p style="font-size:14.5px; color:#c8c8d8; margin:0 0 16px; line-height:1.6;">
+      Antes de empezar, revisa cómo manejamos tu información. Tus tareas se guardan solo en tu dispositivo — no creamos cuentas ni pedimos datos personales.
+    </p>
+    <label style="display:flex; align-items:flex-start; gap:10px; font-size:13.5px; color:#c8c8d8; margin-bottom:18px; cursor:pointer;">
+      <input type="checkbox" id="cl-privacy-checkbox" style="margin-top:3px; width:16px; height:16px; accent-color:#8b5cf6;">
+      <span>He leído y aceptado la <a href="./privacidad.html" target="_blank" style="color:#ec4899;">Política de Privacidad de Planify</a>.</span>
+    </label>
+    <button id="cl-privacy-accept" disabled style="
+      width:100%; padding:12px; border:none; border-radius:10px;
+      background:#3a3a4a; color:#9a9ab0; font-weight:600; font-size:14.5px;
+      cursor:not-allowed; transition:all .2s;
+    ">Aceptar y continuar</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'cl_planify_privacy_accepted';
+  var overlay = document.getElementById('cl-privacy-overlay');
+  var checkbox = document.getElementById('cl-privacy-checkbox');
+  var acceptBtn = document.getElementById('cl-privacy-accept');
+
+  if (localStorage.getItem(STORAGE_KEY) === 'true') {
+    overlay.style.display = 'none';
+  }
+
+  checkbox.addEventListener('change', function () {
+    if (checkbox.checked) {
+      acceptBtn.disabled = false;
+      acceptBtn.style.background = 'linear-gradient(135deg,#8b5cf6,#ec4899)';
+      acceptBtn.style.color = '#fff';
+      acceptBtn.style.cursor = 'pointer';
+    } else {
+      acceptBtn.disabled = true;
+      acceptBtn.style.background = '#3a3a4a';
+      acceptBtn.style.color = '#9a9ab0';
+      acceptBtn.style.cursor = 'not-allowed';
+    }
+  });
+
+  acceptBtn.addEventListener('click', function () {
+    if (checkbox.checked) {
+      localStorage.setItem(STORAGE_KEY, 'true');
+      overlay.style.display = 'none';
+    }
+  });
+})();
+</script>
+
 <script>
 const sNames={mat:'Matemáticas',esp:'Español',cien:'Ciencias',hist:'Historia',ing:'Inglés',arte:'Arte',edu:'Ed. Física',otro:'Otra'};
 const ACHIEVEMENTS=[
